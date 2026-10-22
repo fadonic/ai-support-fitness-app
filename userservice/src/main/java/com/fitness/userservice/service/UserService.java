@@ -5,10 +5,12 @@ import com.fitness.userservice.dto.UserResponse;
 import com.fitness.userservice.model.User;
 import com.fitness.userservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserService {
     private UserRepository userRepository;
     public UserResponse register(RegisterRequest request) {
@@ -48,5 +50,10 @@ public class UserService {
         response.setUpdatedAt(user.getUpdatedAt());
 
         return response;
+    }
+
+    public Boolean existsByUserId(String userId) {
+        log.info("Calling user validation API for userId: {}", userId);
+        return userRepository.existsById(userId);
     }
 }
