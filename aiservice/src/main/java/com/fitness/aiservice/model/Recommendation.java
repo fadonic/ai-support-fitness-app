@@ -21,7 +21,4 @@ public class Recommendation {
     private List<String> suggestions;
     @CreatedDate
     private LocalDateTime createdAt;
-
-
-
 }
